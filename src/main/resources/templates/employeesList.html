@@ -36,25 +36,31 @@
 
     <div class="row">
         <div class="col-12 mt-2">
+            <h4 class="header font-weight-bold">Lista pracowników</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Imię</th>
-                    <th scope="col">Nazwisko</th>
-                    <th scope="col">Stanowisko</th>
-                    <th scope="col">Pensja brutto</th>
-                    <th scope="col"></th>
+                    <th class="align-middle" scope="col">#</th>
+                    <th class="align-middle" scope="col">Imię</th>
+                    <th class="align-middle" scope="col">Nazwisko</th>
+                    <th class="align-middle" scope="col">Stanowisko</th>
+                    <th class="align-middle" scope="col">Pensja brutto</th>
+                    <th class="align-middle" scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="employee : ${employees}">
-                    <th scope="row" th:text="${employee.getId()}"></th>
-                    <td th:text="${employee.getFirstName()}"></td>
-                    <td th:text="${employee.getLastName()}"></td>
-                    <td th:text="${employee.getPosition()}"></td>
-                    <td th:text="${employee.getGrossSalary()}"></td>
-                    <td class="text-right">
+                    <th class="align-middle" scope="row" th:text="${employee.getId()}"></th>
+                    <td class="align-middle" th:text="${employee.getFirstName()}"></td>
+                    <td class="align-middle" th:text="${employee.getLastName()}"></td>
+                    <td class="align-middle" th:text="${employee.getPosition()}"></td>
+                    <td class="align-middle" th:text="${employee.getGrossSalary()}"></td>
+                    <td class="align-middle text-right">
                         <a th:href="@{'/employees/' + ${employee.getId()}}" class="btn btn-sm btn-primary">Szczegóły</a>
                     </td>
                 </tr>
