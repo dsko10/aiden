@@ -2,6 +2,7 @@ package com.example.aiden.controller;
 
 import com.example.aiden.model.Employee;
 import com.example.aiden.service.EmployeeService;
+import com.example.aiden.service.WorkTimeProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class EmployeeController {
     private final EmployeeService employeeService;
+    private final WorkTimeProvider workTimeProvider;
 
-    public EmployeeController(EmployeeService employeeService) {
+    public EmployeeController(EmployeeService employeeService, WorkTimeProvider workTimeProvider) {
         this.employeeService = employeeService;
+        this.workTimeProvider = workTimeProvider;
     }
 
     @GetMapping("/employees")
@@ -34,20 +37,23 @@ public class EmployeeController {
     @GetMapping("/employees/{id}/edit")
     public String editEmployee(@PathVariable Long id, @ModelAttribute Employee employee, Model model) {
         model.addAttribute("employee", employeeService.getEmployee(id));
+        model.addAttribute("workTimeEntries", workTimeProvider.getWorkTimeEntriesAsMap());
         return "employeeForm";
     }
 
     @GetMapping("/employees/add")
     public String addEmployee(@ModelAttribute Employee employee, Model model) {
         model.addAttribute("employee", employee);
+        model.addAttribute("workTimeEntries", workTimeProvider.getWorkTimeEntriesAsMap());
         return "employeeForm";
     }
 
-    @PutMapping("/employees")
+    @PostMapping("/employees")
     public String saveEmployee(@ModelAttribute Employee employee) {
+        boolean isNew = employee.getId() == null;
         Employee saved = employeeService.saveEmployee(employee);
         String fullName = saved.getFirstName() + " " + saved.getLastName();
-        if (employee.getId() == null) {
+        if (isNew) {
             return "redirect:/employees?added=" + fullName;
         } else {
             return "redirect:/employees?updated=" + fullName;

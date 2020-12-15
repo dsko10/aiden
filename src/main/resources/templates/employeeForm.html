@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formularz pracownika</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-2">
+            <form th:action="@{/employees}" th:object="${employee}" method="post">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">Imię</label>
+                    <input type="text" class="form-control" id="firstName" aria-describedby="firstName"
+                           th:field="*{firstName}">
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control" id="lastName" aria-describedby="lastName"
+                           th:field="*{lastName}">
+                </div>
+                <div class="mb-3">
+                    <label for="position" class="form-label">Stanowisko</label>
+                    <input type="text" class="form-control" id="position" aria-describedby="position"
+                           th:field="*{position}">
+                </div>
+                <div class="mb-3">
+                    <label for="workTime" class="form-label">Etat</label>
+                    <select class="form-control" id="workTime" required="required" th:field="*{workTime}">
+                        <option th:each="entry : ${workTimeEntries.entrySet()}" th:value="${entry.key}"
+                                th:text="${entry.value}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="grossSalary" class="form-label">Pensja Brutto</label>
+                    <input type="number" class="form-control" id="grossSalary" aria-describedby="grossSalary"
+                           th:field="*{grossSalary}">
+                </div>
+                <input type="hidden" th:field="*{id}">
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
