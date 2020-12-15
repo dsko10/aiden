@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="Aplikacja"></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-2 text-right">
+            <a th:href="@{/employees/add}" class="btn btn-primary">Dodaj pracownika</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2" th:if="${param.added != null}">
+            <div class="alert alert-success" role="alert">
+                Dodano pracownika <span class="font-weight-bold" th:text="${param.added}"></span>
+            </div>
+        </div>
+        <div class="col-12 mt-2" th:if="${param.updated != null}">
+            <div class="alert alert-warning" role="alert">
+                Zaktualizowano dane pracownika <span class="font-weight-bold" th:text="${param.updated}"></span>
+            </div>
+        </div>
+        <div class="col-12 mt-2" th:if="${param.deleted != null}">
+            <div class="alert alert-danger" role="alert">
+                Usunięto pracownika <span class="font-weight-bold" th:text="${param.deleted}"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Stanowisko</th>
+                    <th scope="col">Pensja Brutto</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee : ${employees}">
+                    <th scope="row" th:text="${employee.getId()}"></th>
+                    <td th:text="${employee.getFirstName()}"></td>
+                    <td th:text="${employee.getLastName()}"></td>
+                    <td th:text="${employee.getPosition()}"></td>
+                    <td th:text="${employee.getGrossSalary()}"></td>
+                    <td>
+                        <a th:href="@{/employees/${employee.getId()}}" class="btn btn-sm btn-primary">Szczegóły</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

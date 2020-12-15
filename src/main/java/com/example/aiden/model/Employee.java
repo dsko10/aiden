@@ -12,6 +12,8 @@ public class Employee {
 
     private String lastName;
 
+    private String position;
+
     @Enumerated(EnumType.STRING)
     private WorkTime workTime;
 
@@ -39,6 +41,14 @@ public class Employee {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public WorkTime getWorkTime() {

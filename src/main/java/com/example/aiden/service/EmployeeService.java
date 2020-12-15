@@ -46,6 +46,7 @@ public class EmployeeService {
         employeeWithSalary.setId(employee.getId());
         employeeWithSalary.setFirstName(employee.getFirstName());
         employeeWithSalary.setLastName(employee.getLastName());
+        employeeWithSalary.setPosition(employee.getPosition());
         employeeWithSalary.setWorkTime(employee.getWorkTime());
         employeeWithSalary.setGrossSalary(employee.getGrossSalary());
         employeeWithSalary.setTax(employee.getGrossSalary() * 0.0626);

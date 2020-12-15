@@ -4,6 +4,7 @@ public class EmployeeWithSalary {
     private Long id;
     private String firstName;
     private String lastName;
+    private String position;
     private WorkTime workTime;
     private Double grossSalary;
     private Double netSalary;
@@ -35,6 +36,14 @@ public class EmployeeWithSalary {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public WorkTime getWorkTime() {

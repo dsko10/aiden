@@ -21,15 +21,12 @@ public class EmployeeController {
             @RequestParam(required = false, value = "updated") String updated,
             @RequestParam(required = false, value = "deleted") String deleted
     ) {
-        if (added != null) model.addAttribute("added", added);
-        if (updated != null) model.addAttribute("updated", updated);
-        if (deleted != null) model.addAttribute("deleted", deleted);
         model.addAttribute("employees", employeeService.getAllEmployeesWithSalary());
         return "employeesList";
     }
 
     @GetMapping("/employees/{id}")
-    public String getAllEmployees(@PathVariable Long id, Model model) {
+    public String getEmployeeById(@PathVariable Long id, Model model) {
         model.addAttribute("employee", employeeService.getEmployeeWithSalary(id));
         return "employeeProfile";
     }
