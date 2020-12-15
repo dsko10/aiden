@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista pracowników</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-2 text-right">
+            <a th:href="@{'/employees/' + ${employee.getId()} + '/edit'}" class="btn btn-warning mr-2">Edytuj</a>
+            <a th:href="@{/employees}" class="btn btn-primary">Powrót</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <h4 class="header font-weight-bold">Profil pracownika</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 mt-2">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">Identyfikator</th>
+                    <td th:text="${employee.getId()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Imię</th>
+                    <td th:text="${employee.getFirstName()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Nazwisko</th>
+                    <td th:text="${employee.getLastName()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Stanowisko</th>
+                    <td th:text="${employee.getPosition()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Etat</th>
+                    <td th:text="${employee.getWorkTime().getName()}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6 mt-2">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th scope="row">Pensja brutto</th>
+                    <th th:text="${employee.getGrossSalary()}"></th>
+                </tr>
+                <tr>
+                    <th scope="row">Ubezpieczenie emerytalne</th>
+                    <td th:text="${employee.getPensionInsurance()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Ubezpieczenie rentowe</th>
+                    <td th:text="${employee.getDisabilityInsurance()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Ubezpieczenie chorobowe</th>
+                    <td th:text="${employee.getMedicalInsurance()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Ubezpieczenie zdrowotne</th>
+                    <td th:text="${employee.getHealthInsurance()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Podatek</th>
+                    <td th:text="${employee.getTax()}"></td>
+                </tr>
+                <tr>
+                    <th scope="row">Pensja netto</th>
+                    <th th:text="${employee.getNetSalary()}"></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

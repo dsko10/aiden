@@ -11,6 +11,19 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-12 mt-2 text-right">
+            <a th:href="@{/employees}" class="btn btn-primary"  th:if="${employee.getId() == null}">Powrót</a>
+            <a th:href="@{'/employees/' + ${employee.getId()}}" class="btn btn-primary"  th:if="${employee.getId() != null}">Powrót</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <h4 class="header font-weight-bold">Formularz pracownika</h4>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-12 mt-2">
             <form th:action="@{/employees}" th:object="${employee}" method="post">
                 <div class="mb-3">
@@ -36,7 +49,7 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="grossSalary" class="form-label">Pensja Brutto</label>
+                    <label for="grossSalary" class="form-label">Pensja brutto</label>
                     <input type="number" class="form-control" id="grossSalary" aria-describedby="grossSalary"
                            th:field="*{grossSalary}">
                 </div>

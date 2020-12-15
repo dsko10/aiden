@@ -24,7 +24,7 @@ public class EmployeeController {
             @RequestParam(required = false, value = "updated") String updated,
             @RequestParam(required = false, value = "deleted") String deleted
     ) {
-        model.addAttribute("employees", employeeService.getAllEmployeesWithSalary());
+        model.addAttribute("employees", employeeService.getAllEmployees());
         return "employeesList";
     }
 
