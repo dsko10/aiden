@@ -54,7 +54,7 @@
                     <td th:text="${employee.getLastName()}"></td>
                     <td th:text="${employee.getPosition()}"></td>
                     <td th:text="${employee.getGrossSalary()}"></td>
-                    <td>
+                    <td class="text-right">
                         <a th:href="@{'/employees/' + ${employee.getId()}}" class="btn btn-sm btn-primary">Szczegóły</a>
                     </td>
                 </tr>

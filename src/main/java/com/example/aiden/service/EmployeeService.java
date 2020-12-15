@@ -5,9 +5,9 @@ import com.example.aiden.model.EmployeeWithSalary;
 import com.example.aiden.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -26,7 +26,9 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAll().stream()
+                .sorted(Comparator.comparing(Employee::getId))
+                .collect(Collectors.toList());
     }
 
     public Employee saveEmployee(Employee employee) {

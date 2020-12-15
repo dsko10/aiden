@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Lista pracowników</title>
+    <title>Profil pracownika</title>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,6 +12,33 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-2 text-right">
+            <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="employee">Usuń
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Potwierdzenie usunięcia</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-left">
+                            Czy napewno chcesz usunąć pracownika <span th:text="${employee.getFirstName()}"></span>
+                            <span th:text="${employee.getLastName()}"></span>?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Anuluj</button>
+                            <form th:action="@{'/employees/' + ${employee.getId()}}" th:method="delete">
+                                <input type="hidden" name="_method" value="delete"/>
+                                <button class="btn btn-danger" type="submit">Usuń</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <a th:href="@{'/employees/' + ${employee.getId()} + '/edit'}" class="btn btn-warning mr-2">Edytuj</a>
             <a th:href="@{/employees}" class="btn btn-primary">Powrót</a>
         </div>
@@ -86,5 +113,7 @@
         </div>
     </div>
 </div>
+<script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
 </body>
 </html>
