@@ -12,8 +12,9 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-2 text-right">
-            <a th:href="@{/employees}" class="btn btn-primary"  th:if="${employee.getId() == null}">Powrót</a>
-            <a th:href="@{'/employees/' + ${employee.getId()}}" class="btn btn-primary"  th:if="${employee.getId() != null}">Powrót</a>
+            <a th:href="@{/employees}" class="btn btn-primary" th:if="${employee.getId() == null}">Powrót</a>
+            <a th:href="@{'/employees/' + ${employee.getId()}}" class="btn btn-primary"
+               th:if="${employee.getId() != null}">Powrót</a>
         </div>
     </div>
 
@@ -29,17 +30,17 @@
                 <div class="mb-3">
                     <label for="firstName" class="form-label">Imię</label>
                     <input type="text" class="form-control" id="firstName" aria-describedby="firstName"
-                           th:field="*{firstName}">
+                           required="required" th:field="*{firstName}">
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Nazwisko</label>
                     <input type="text" class="form-control" id="lastName" aria-describedby="lastName"
-                           th:field="*{lastName}">
+                           required="required" th:field="*{lastName}">
                 </div>
                 <div class="mb-3">
                     <label for="position" class="form-label">Stanowisko</label>
                     <input type="text" class="form-control" id="position" aria-describedby="position"
-                           th:field="*{position}">
+                           required="required" th:field="*{position}">
                 </div>
                 <div class="mb-3">
                     <label for="workTime" class="form-label">Etat</label>
@@ -51,7 +52,7 @@
                 <div class="mb-3">
                     <label for="grossSalary" class="form-label">Pensja brutto</label>
                     <input type="number" class="form-control" id="grossSalary" aria-describedby="grossSalary"
-                           th:field="*{grossSalary}">
+                           required="required" th:field="*{grossSalary}">
                 </div>
                 <input type="hidden" th:field="*{id}">
                 <button type="submit" class="btn btn-primary">Zapisz</button>
