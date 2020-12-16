@@ -18,12 +18,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees")
-    public String getAllEmployees(
-            Model model,
-            @RequestParam(required = false, value = "added") String added,
-            @RequestParam(required = false, value = "updated") String updated,
-            @RequestParam(required = false, value = "deleted") String deleted
-    ) {
+    public String getAllEmployees(Model model) {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "employeesList";
     }
